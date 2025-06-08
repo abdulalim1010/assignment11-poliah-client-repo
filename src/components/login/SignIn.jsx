@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { use } from 'react';
 import lottimage from '../../assets/Animation - 1748840386802.json'
 import Lottie from 'lottie-react';
+import { Authcontext } from '../navbar/authcontext/Authcontext';
 
 const SignIn = () => {
+  const {sginInUser}=use(Authcontext)
   const handleSignIn = e => {
     e.preventDefault()
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email,password)
+    console.log(email, password)
+    sginInUser(email, password)
+      .then(result => {
+      console.log(result.user)
+      })
+      .catch(error => {
+      console.log(error.message)
+    })
 
   }
 

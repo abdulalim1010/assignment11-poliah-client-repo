@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "Learn React",
+    "author": "Dan Abramov",
+    "category": "Programming",
+    "quantity": 5,
+    "rating": 4.5,
+    "image": "/assets/programming-book.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Fictional Journey",
+    "author": "John Writer",
+    "category": "Fiction",
+    "quantity": 3,
+    "rating": 4.0,
+    "image": "/assets/fiction-book.jpg"
+  },
+  {
+    "id": 3,
+    "title": "JavaScript Mastery",
+    "author": "Kyle Simpson",
+    "category": "Programming",
+    "quantity": 6,
+    "rating": 4.8,
+    "image": "/assets/js-book.jpg"
+  },
+  {
+    "id": 4,
+    "title": "The Science of Everything",
+    "author": "Jane Newton",
+    "category": "Science",
+    "quantity": 4,
+    "rating": 4.6,
+    "image": "/assets/science-book.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Mystery Island",
+    "author": "Emily Shadow",
+    "category": "Fiction",
+    "quantity": 2,
+    "rating": 4.2,
+    "image": "/assets/mystery-book.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Understanding History",
+    "author": "Tom Heritage",
+    "category": "History",
+    "quantity": 7,
+    "rating": 4.1,
+    "image": "/assets/history-book.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Modern CSS",
+    "author": "Sara Soueidan",
+    "category": "Programming",
+    "quantity": 3,
+    "rating": 4.7,
+    "image": "/assets/css-book.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Space and Time",
+    "author": "Albert S.",
+    "category": "Science",
+    "quantity": 5,
+    "rating": 4.4,
+    "image": "/assets/space-book.jpg"
+  },
+  {
+    "id": 9,
+    "title": "The Lost World",
+    "author": "Arthur Conan Doyle",
+    "category": "Fiction",
+    "quantity": 4,
+    "rating": 4.3,
+    "image": "/assets/lostworld-book.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Ancient Civilizations",
+    "author": "Laura Rome",
+    "category": "History",
+    "quantity": 6,
+    "rating": 4.6,
+    "image": "/assets/ancient-book.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Python for Beginners",
+    "author": "Guido Rossum",
+    "category": "Programming",
+    "quantity": 5,
+    "rating": 4.9,
+    "image": "/assets/python-book.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Quantum Realities",
+    "author": "Neil B.",
+    "category": "Science",
+    "quantity": 2,
+    "rating": 4.3,
+    "image": "/assets/quantum-book.jpg"
+  },
+  {
+    "id": 13,
+    "title": "Journey to the Unknown",
+    "author": "Mark Twilight",
+    "category": "Fiction",
+    "quantity": 4,
+    "rating": 4.0,
+    "image": "/assets/journey-book.jpg"
+  },
+  {
+    "id": 14,
+    "title": "World Wars Explained",
+    "author": "Hannah Peace",
+    "category": "History",
+    "quantity": 3,
+    "rating": 4.4,
+    "image": "/assets/wars-book.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Building Web Apps",
+    "author": "Kent C. Dodds",
+    "category": "Programming",
+    "quantity": 6,
+    "rating": 4.8,
+    "image": "/assets/webapps-book.jpg"
+  },
+  {
+    "id": 16,
+    "title": "Human Anatomy Basics",
+    "author": "Dr. Clara Heart",
+    "category": "Science",
+    "quantity": 3,
+    "rating": 4.1,
+    "image": "/assets/anatomy-book.jpg"
+  },
+  {
+    "id": 17,
+    "title": "The Great Adventure",
+    "author": "Lucy Dreamer",
+    "category": "Fiction",
+    "quantity": 5,
+    "rating": 4.2,
+    "image": "/assets/adventure-book.jpg"
+  },
+  {
+    "id": 18,
+    "title": "Empires of the Past",
+    "author": "Ronald Empire",
+    "category": "History",
+    "quantity": 4,
+    "rating": 4.5,
+    "image": "/assets/empires-book.jpg"
+  },
+  {
+    "id": 19,
+    "title": "TypeScript Handbook",
+    "author": "Anders Hejlsberg",
+    "category": "Programming",
+    "quantity": 2,
+    "rating": 4.6,
+    "image": "/assets/typescript-book.jpg"
+  },
+  {
+    "id": 20,
+    "title": "Exploring the Universe",
+    "author": "Carl Star",
+    "category": "Science",
+    "quantity": 5,
+    "rating": 4.7,
+    "image": "/assets/universe-book.jpg"
+  }
+]

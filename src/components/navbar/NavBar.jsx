@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router';
+import logoimage from '../../assets/lai.png'
+
 
 
 const NavBar = () => {
@@ -58,7 +60,7 @@ const NavBar = () => {
        {links}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">My Books</a>
+          <a className="btn btn-ghost text-xl">  My Books<img src={logoimage} className='w-15 h-10' alt="" /></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

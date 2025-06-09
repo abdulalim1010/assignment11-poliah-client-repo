@@ -7,6 +7,7 @@ import RootLayOut from '../components/RootLayOut';
 import Home from '../components/home/Home';
 import Login from '../components/login/Login';
 import SignIn from '../components/login/SignIn';
+import CategoryBooks from '../components/CategoryBooks';
 
 
 
@@ -28,7 +29,13 @@ const router = createBrowserRouter([
         path: '/signIn',
         Component:SignIn
         
+      },
+      {
+        path: "/category/:name",
+        element:<CategoryBooks></CategoryBooks>
+
       }
+
  ]
   },
 ]);

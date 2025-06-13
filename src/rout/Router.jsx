@@ -7,6 +7,8 @@ import RootLayOut from '../components/RootLayOut';
 import Home from '../components/home/Home';
 import Login from '../components/login/Login';
 import SignIn from '../components/login/SignIn';
+
+import AllBooks from '../components/AllBooks';
 import CategoryBooks from '../components/CategoryBooks';
 
 
@@ -30,11 +32,16 @@ const router = createBrowserRouter([
         Component:SignIn
         
       },
-      {
-        path: "/category/:name",
-        element:<CategoryBooks></CategoryBooks>
 
-      }
+      {
+        path: '/all-books',
+        Component:AllBooks
+      },
+      {
+        path: '/category/:category', // ✅ dynamic category route
+        Component: CategoryBooks,
+      },
+    
 
  ]
   },

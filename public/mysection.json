@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "image": "https://covers.openlibrary.org/b/id/8231856-L.jpg",
+    "name": "To Kill a Mockingbird",
+    "writer": "Harper Lee",
+    "description": "A novel about the serious issues of rape and racial inequality in the American South.",
+    "rating": 4.8,
+    "publishedDate": "1960-07-11"
+  },
+  {
+    "id": 2,
+    "image": "https://covers.openlibrary.org/b/id/8234811-L.jpg",
+    "name": "1984",
+    "writer": "George Orwell",
+    "description": "A dystopian social science fiction novel and cautionary tale about totalitarianism.",
+    "rating": 4.7,
+    "publishedDate": "1949-06-08"
+  },
+  {
+    "id": 3,
+    "image": "https://covers.openlibrary.org/b/id/7222246-L.jpg",
+    "name": "Pride and Prejudice",
+    "writer": "Jane Austen",
+    "description": "A romantic novel that charts the emotional development of the protagonist Elizabeth Bennet.",
+    "rating": 4.6,
+    "publishedDate": "1813-01-28"
+  },
+  {
+    "id": 4,
+    "image": "https://covers.openlibrary.org/b/id/8260907-L.jpg",
+    "name": "The Great Gatsby",
+    "writer": "F. Scott Fitzgerald",
+    "description": "A novel about the American dream and the roaring twenties.",
+    "rating": 4.3,
+    "publishedDate": "1925-04-10"
+  },
+  {
+    "id": 5,
+    "image": "https://covers.openlibrary.org/b/id/10567955-L.jpg",
+    "name": "Moby-Dick",
+    "writer": "Herman Melville",
+    "description": "The narrative of Captain Ahab's obsessive quest to kill the white whale.",
+    "rating": 4.1,
+    "publishedDate": "1851-10-18"
+  },
+  {
+    "id": 6,
+    "image": "https://covers.openlibrary.org/b/id/8167891-L.jpg",
+    "name": "War and Peace",
+    "writer": "Leo Tolstoy",
+    "description": "A historical novel that chronicles the French invasion of Russia.",
+    "rating": 4.4,
+    "publishedDate": "1869-01-01"
+  },
+  {
+    "id": 7,
+    "image": "https://covers.openlibrary.org/b/id/8319256-L.jpg",
+    "name": "The Catcher in the Rye",
+    "writer": "J.D. Salinger",
+    "description": "A story about teenage alienation and loss of innocence.",
+    "rating": 4.0,
+    "publishedDate": "1951-07-16"
+  },
+  {
+    "id": 8,
+    "image": "https://covers.openlibrary.org/b/id/10909270-L.jpg",
+    "name": "The Hobbit",
+    "writer": "J.R.R. Tolkien",
+    "description": "A fantasy novel about the quest of home-loving Bilbo Baggins.",
+    "rating": 4.7,
+    "publishedDate": "1937-09-21"
+  },
+  {
+    "id": 9,
+    "image": "https://covers.openlibrary.org/b/id/8231991-L.jpg",
+    "name": "Fahrenheit 451",
+    "writer": "Ray Bradbury",
+    "description": "A dystopian novel about a future society where books are banned.",
+    "rating": 4.2,
+    "publishedDate": "1953-10-19"
+  },
+  {
+    "id": 10,
+    "image": "https://covers.openlibrary.org/b/id/8231923-L.jpg",
+    "name": "Jane Eyre",
+    "writer": "Charlotte Brontë",
+    "description": "A novel about the experiences of the eponymous heroine.",
+    "rating": 4.5,
+    "publishedDate": "1847-10-16"
+  },
+  {
+    "id": 11,
+    "image": "https://covers.openlibrary.org/b/id/10567957-L.jpg",
+    "name": "Crime and Punishment",
+    "writer": "Fyodor Dostoevsky",
+    "description": "A psychological novel about crime, guilt, and redemption.",
+    "rating": 4.6,
+    "publishedDate": "1866-01-01"
+  },
+  {
+    "id": 12,
+    "image": "https://covers.openlibrary.org/b/id/8231961-L.jpg",
+    "name": "The Odyssey",
+    "writer": "Homer",
+    "description": "An epic poem about Odysseus’ long journey home after the Trojan War.",
+    "rating": 4.3,
+    "publishedDate": "-800-01-01"
+  },
+  {
+    "id": 13,
+    "image": "https://covers.openlibrary.org/b/id/8108674-L.jpg",
+    "name": "Brave New World",
+    "writer": "Aldous Huxley",
+    "description": "A dystopian novel that anticipates developments in reproductive technology.",
+    "rating": 4.2,
+    "publishedDate": "1932-08-31"
+  },
+  {
+    "id": 14,
+    "image": "https://covers.openlibrary.org/b/id/11111111-L.jpg",
+    "name": "The Lord of the Rings",
+    "writer": "J.R.R. Tolkien",
+    "description": "An epic fantasy novel about the quest to destroy the One Ring.",
+    "rating": 4.9,
+    "publishedDate": "1954-07-29"
+  },
+  {
+    "id": 15,
+    "image": "https://covers.openlibrary.org/b/id/8231983-L.jpg",
+    "name": "Animal Farm",
+    "writer": "George Orwell",
+    "description": "An allegorical novella reflecting events leading up to the Russian Revolution.",
+    "rating": 4.5,
+    "publishedDate": "1945-08-17"
+  },
+  {
+    "id": 16,
+    "image": "https://covers.openlibrary.org/b/id/8231857-L.jpg",
+    "name": "Wuthering Heights",
+    "writer": "Emily Brontë",
+    "description": "A novel about passion and revenge on the Yorkshire moors.",
+    "rating": 4.1,
+    "publishedDate": "1847-12-01"
+  },
+  {
+    "id": 17,
+    "image": "https://covers.openlibrary.org/b/id/8231920-L.jpg",
+    "name": "The Picture of Dorian Gray",
+    "writer": "Oscar Wilde",
+    "description": "A philosophical novel about vanity and moral corruption.",
+    "rating": 4.0,
+    "publishedDate": "1890-06-20"
+  },
+  {
+    "id": 18,
+    "image": "https://covers.openlibrary.org/b/id/8231839-L.jpg",
+    "name": "Dracula",
+    "writer": "Bram Stoker",
+    "description": "A gothic horror novel introducing Count Dracula.",
+    "rating": 4.3,
+    "publishedDate": "1897-05-26"
+  },
+  {
+    "id": 19,
+    "image": "https://covers.openlibrary.org/b/id/8231875-L.jpg",
+    "name": "Frankenstein",
+    "writer": "Mary Shelley",
+    "description": "A novel about a scientist who creates a sentient creature.",
+    "rating": 4.1,
+    "publishedDate": "1818-01-01"
+  },
+  {
+    "id": 20,
+    "image": "https://covers.openlibrary.org/b/id/8231805-L.jpg",
+    "name": "The Grapes of Wrath",
+    "writer": "John Steinbeck",
+    "description": "A story about the hardships of a poor family during the Great Depression.",
+    "rating": 4.2,
+    "publishedDate": "1939-04-14"
+  },
+  {
+    "id": 21,
+    "image": "https://covers.openlibrary.org/b/id/8231902-L.jpg",
+    "name": "The Alchemist",
+    "writer": "Paulo Coelho",
+    "description": "A novel about a shepherd's journey to fulfill his personal legend.",
+    "rating": 4.4,
+    "publishedDate": "1988-01-01"
+  },
+  {
+    "id": 22,
+    "image": "https://covers.openlibrary.org/b/id/8231913-L.jpg",
+    "name": "Les Misérables",
+    "writer": "Victor Hugo",
+    "description": "An epic novel about social injustice in 19th century France.",
+    "rating": 4.7,
+    "publishedDate": "1862-01-01"
+  },
+  {
+    "id": 23,
+    "image": "https://covers.openlibrary.org/b/id/8231834-L.jpg",
+    "name": "The Count of Monte Cristo",
+    "writer": "Alexandre Dumas",
+    "description": "A story of an innocent man’s betrayal and revenge.",
+    "rating": 4.6,
+    "publishedDate": "1844-01-01"
+  },
+  {
+    "id": 24,
+    "image": "https://covers.openlibrary.org/b/id/8231881-L.jpg",
+    "name": "Great Expectations",
+    "writer": "Charles Dickens",
+    "description": "A coming-of-age novel featuring the orphan Pip.",
+    "rating": 4.3,
+    "publishedDate": "1861-08-01"
+  }
+]

@@ -11,6 +11,7 @@ import SignIn from '../components/login/SignIn';
 import AllBooks from '../components/AllBooks';
 import CategoryBooks from '../components/CategoryBooks';
 import BookDetails from '../components/BookDetails';
+import MyBooks from '../components/MyBooks';
 
 
 
@@ -37,6 +38,15 @@ const router = createBrowserRouter([
       {
         path: '/all-books',
         Component:AllBooks
+      },
+      {
+        path: '/my-books', 
+        
+        Component: MyBooks
+      
+        
+      },
+      {
       },
       {
         path: '/category/:category', // ✅ dynamic category route

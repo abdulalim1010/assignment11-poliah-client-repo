@@ -1,9 +1,12 @@
-import { useParams, Link } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router';
+import { useEffect, useState, useContext } from 'react';
+import { Authcontext } from '../components/navbar/authcontext/Authcontext';
 
 const BookDetails = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
+  const navigate = useNavigate();
+  const { user } = useContext(Authcontext);
 
   useEffect(() => {
     fetch(`http://localhost:3000/books/${id}`)
@@ -14,6 +17,36 @@ const BookDetails = () => {
       .then(data => setBook(data))
       .catch(() => setBook(null));
   }, [id]);
+
+  const handleBorrow = () => {
+    if (!user) {
+      navigate('/login'); // 🔁 Redirect to login page
+      return;
+    }
+
+    const borrowInfo = {
+      userEmail: user.email,
+      bookId: book._id,
+      borrowedAt: new Date().toISOString(),
+    };
+
+    fetch('http://localhost:3000/borrowed-books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(borrowInfo),
+    })
+      .then(res => res.json())
+      .then(() => {
+        alert('Book borrowed successfully!');
+        navigate('/borrowed-books');
+      })
+      .catch(err => {
+        console.error('Borrow failed:', err);
+        alert('Borrowing failed');
+      });
+  };
 
   if (!book) return <div className="p-4">Loading or book not found...</div>;
 
@@ -27,8 +60,8 @@ const BookDetails = () => {
         <p className="mb-1"><strong>Quantity:</strong> {book.quantity}</p>
         <p className="mb-1"><strong>Rating:</strong> {book.rating}</p>
         <div className='flex justify-between'>
-        <Link to="/" className="btn btn-secondary mt-4">← Back to Book List</Link>
-        <button className='btn btn-primary'>borrow the book</button>
+          <button onClick={() => navigate('/')} className="btn btn-secondary mt-4">← Back to Book List</button>
+          <button onClick={handleBorrow} className="btn btn-primary mt-4">Borrow This Book</button>
         </div>
       </div>
     </div>
@@ -36,4 +69,3 @@ const BookDetails = () => {
 };
 
 export default BookDetails;
-

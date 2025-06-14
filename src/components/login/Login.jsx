@@ -3,9 +3,12 @@ import React, { useContext } from 'react';
 import loginimage from '../../assets/Alonimation - 1749876095525.json';
 import { Authcontext } from '../navbar/authcontext/Authcontext';
 import SocialLogin from './socialLogin/SocialLogin';
+import { useLocation } from 'react-router';
 
 const Login = () => {
   const { createUser } = useContext(Authcontext);
+  const location = useLocation();
+  console.log("location in sign page",location)
 
   const handleLogin = e => {
     e.preventDefault();

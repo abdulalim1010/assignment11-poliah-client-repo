@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import lottimage from '../../assets/Asignnimation - 1748840386802.json'
 import Lottie from 'lottie-react';
 import { Authcontext } from '../navbar/authcontext/Authcontext';
+import SocialLogin from './socialLogin/SocialLogin';
 
 const SignIn = () => {
   const {sginInUser}=use(Authcontext)
@@ -47,7 +48,8 @@ const SignIn = () => {
               </fieldset>
             </form>
         
-          </div>
+            </div>
+            <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink } from 'react-router';
 import logoimage from '../../assets/lai.png'
+import { Authcontext } from './authcontext/Authcontext';
 
 
 
 const NavBar = () => {
 
-
-
+const {user,signOutUser}=use(Authcontext)
+  const hanldeLogout = () => {
+    signOutUser()
+    .then(() => {
+      console.log('User logged out');
+    })
+    .catch(error => {
+      console.error('Error logging out:', error);
+    }); 
+  }
 
 
 
@@ -55,7 +64,7 @@ const NavBar = () => {
   </li>
 </>
   return (
-    <div>
+    <div className='w-11/12 mx-auto mt-9'>
       <div className="navbar bg-blue-50 shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
@@ -76,8 +85,10 @@ const NavBar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <NavLink className="btn " to={'/login'}>register</NavLink>
-  <NavLink className="btn " to={'/signin'}>SignIn</NavLink>
+          {
+            user?<button onClick={hanldeLogout} className='btn btn-active pr-3'>logout</button>:<><NavLink className="btn " to={'/login'}>Login</NavLink>
+            <NavLink className="btn " to={'/signin'}>SignIn</NavLink></>
+  }
   </div>
 </div>
     </div>

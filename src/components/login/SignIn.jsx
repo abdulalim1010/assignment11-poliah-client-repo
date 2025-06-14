@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import lottimage from '../../assets/Animation - 1748840386802.json'
+import lottimage from '../../assets/Asignnimation - 1748840386802.json'
 import Lottie from 'lottie-react';
 import { Authcontext } from '../navbar/authcontext/Authcontext';
 
@@ -31,7 +31,7 @@ const SignIn = () => {
     <div>
         <div className="hero bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <Lottie style={{ width: '400px' }} animationData={lottimage} loop={true} />
+      <Lottie style={{width:'400px'}} animationData={lottimage } loop={true}></Lottie>
 
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <h1 className="text-5xl px-3 py-6 font-bold">Sign In Now</h1>

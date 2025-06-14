@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react';
 import React, { use } from 'react';
-import registerLotti from '../../assets/Animation - 1748803473651 (1).json'
+import loginimage from '../../assets/Alonimation - 1749876095525.json'
 import { Authcontext } from '../navbar/authcontext/Authcontext';
 
 const Login = () => {
@@ -29,11 +29,13 @@ const {createUser}= use(Authcontext)
       <div className="hero bg-base-200 ">
     <div className="hero-content flex-col lg:flex-row-reverse">
       <div className="text-center lg:text-left">
+            <Lottie style={{ width: '400px' }} animationData={loginimage} loop={true}>  
+              
+       </Lottie>
        
-       <Lottie style={{width:'300px'}} animationData={registerLotti} loop={true}></Lottie>
       </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <h1 className="text-5xl px-3 py-6 font-bold">Register Now!</h1>
+        <h1 className="text-5xl px-3 py-6 font-bold">Login Now!</h1>
         <div className="card-body">
             <form onSubmit={handleLogin} >
             <fieldset className="fieldset">

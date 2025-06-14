@@ -10,6 +10,7 @@ import SignIn from '../components/login/SignIn';
 
 import AllBooks from '../components/AllBooks';
 import CategoryBooks from '../components/CategoryBooks';
+import BookDetails from '../components/BookDetails';
 
 
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
         path: '/category/:category', // ✅ dynamic category route
         Component: CategoryBooks,
       },
+      {
+        path: "/book/:id",
+        Component:BookDetails
+      }
     
 
  ]

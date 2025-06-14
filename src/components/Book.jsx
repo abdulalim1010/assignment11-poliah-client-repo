@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Book = ({ book }) => {
   return (
@@ -20,7 +21,9 @@ const Book = ({ book }) => {
             <p>Rating: {book.rating}</p>
           </div>
           <div className="card-actions justify-end mt-4">
-            <button className="btn btn-primary">Book Details</button>
+            <Link to={`/book/${book._id}`}>
+              <button className="btn btn-primary">Book Details</button>
+            </Link>
           </div>
         </div>
       </div>

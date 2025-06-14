@@ -7,6 +7,7 @@ import h2image from '../../assets/Ah2nimation - 1749873704295.json'
 import h3image from '../../assets/Ah3nimation - 1749873576967.json'
 
 import Lottie from 'lottie-react';
+import StatsCard from '../StatsCard';
 
 const Home = () => {
   return (
@@ -28,7 +29,7 @@ const Home = () => {
         <BookCategories></BookCategories>
       </main>
       <div>
-        <Bonus/>
+     <StatsCard></StatsCard>
       </div>
       
     </div>

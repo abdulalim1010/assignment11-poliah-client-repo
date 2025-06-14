@@ -33,35 +33,40 @@ const AllBooks = () => {
     book.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
     book.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  const text = " ALL THE AVAILABLE BOOKS HERE — ";
+  
   return (
     <div className="w-11/12 mx-auto mt-9">
-    <motion.div style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
-  <motion.h1
-    className="text-5xl m-6 font-bold p-4 text-center text-blue-400 inline-block"
-    initial={{ x: "100%", color: "#ff0000" }}
+
+<div style={{ overflow: "hidden", whiteSpace: "nowrap" }} className="bg-white mb-6">
+  <motion.div
+    style={{ display: "inline-block" }}
     animate={{
-      x: ["100%", "-100%"], // moves from right to left off screen
+      x: ["0%", "-100%"],
       color: ["#ff0000", "#00ff00", "#0000ff", "#ff0000"]
     }}
     transition={{
       x: {
         repeat: Infinity,
         repeatType: "loop",
-        duration: 2,
+        duration: 30,
         ease: "linear"
       },
       color: {
         repeat: Infinity,
         repeatType: "loop",
-        duration: 5,
+        duration: 30,
         ease: "linear"
       }
     }}
   >
-    ALL THE AVAILABLE BOOKS HERE — ALL THE AVAILABLE BOOKS HERE — ALL THE AVAILABLE BOOKS HERE — ALL THE AVAILABLE BOOKS HERE ALL THE AVAILABLE BOOKS HERE
-  </motion.h1>
-</motion.div>
+    <span className="text-5xl font-bold text-blue-500">
+      {text.repeat(20)}
+    </span>
+  </motion.div>
+</div>
+
+
 
       {/* Search Field */}
       <div className="mb-6 text-center">

@@ -1,3 +1,4 @@
+import { div } from 'framer-motion/client';
 import React from 'react';
 import { NavLink } from 'react-router';
 
@@ -5,7 +6,10 @@ const MYBookCard = ({ book }) => {
   const { title, author, description, rating, publishedDate, image } = book;
 
   return (
-    <div className="card bg-white shadow-md rounded-lg overflow-hidden p-4">
+    
+    <div>
+      
+      <div className="card bg-white shadow-md rounded-lg overflow-hidden p-4">
       <img
         src={image}
         alt={title}
@@ -17,9 +21,10 @@ const MYBookCard = ({ book }) => {
       <p className="text-gray-700"><strong>Rating:</strong> ⭐ {rating}</p>
       <p className="text-sm mt-2 text-gray-600">{description}</p>
       <div>
-      <NavLink to='/login'>  <button className='btn btn-block'>Buy Now</button></NavLink>
+      <NavLink to='/login'>  <button className='btn text-white bg-green-700 btn-block'>Buy Now</button></NavLink>
       </div>
     </div>
+</div>
   );
 };
 

@@ -12,6 +12,7 @@ import MyBooks from '../components/MyBooks';
 import AddBooks from '../components/AddBooks';
 import BorrowedBooks from '../components/BorrowedBooks';
 import PrivateRouts from '../routs/PrivateRouts';
+import AddBook from '../components/AddBooks';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,21 @@ const router = createBrowserRouter([
           </PrivateRouts>
         ),
       },
+      {
+
+        path: '/add-books',
+
+        Component: () => (
+          
+          <PrivateRouts>
+            <AddBooks/>
+
+       </PrivateRouts>
+  
+
+)
+      },
+
       {
         path: '/category/:category',
         Component: CategoryBooks,

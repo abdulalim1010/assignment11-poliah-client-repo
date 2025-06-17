@@ -31,7 +31,7 @@ const AddBook = () => {
     });
 
     try {
-      const res = await axios.post('http://localhost:3000/api/books', data);
+      const res = await axios.post('https://y-nine-blush.vercel.app/api/books', data);
       toast.success("Book added successfully!");
       setFormData({ name: '', quantity: '', author: '', category: '', description: '', rating: '', image: null });
     } catch (err) {

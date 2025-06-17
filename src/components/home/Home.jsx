@@ -1,6 +1,6 @@
 import React from 'react';
 import Hero from './Hero';
-import Bonus from '../bonus/Bonus';
+
 import BookCategories from '../BookCategories';
 import h1image from '../../assets/Ah1nimation - 1749873917132.json';
 import h2image from '../../assets/Ah2nimation - 1749873704295.json'

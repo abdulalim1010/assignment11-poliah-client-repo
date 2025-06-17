@@ -9,7 +9,7 @@ const BookDetails = () => {
   const { user } = useContext(Authcontext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/books/${id}`)
+    fetch(`https://y-nine-blush.vercel.app/books/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Book not found');
         return res.json();
@@ -30,7 +30,7 @@ const BookDetails = () => {
       borrowedAt: new Date().toISOString(),
     };
 
-    fetch('http://localhost:3000/borrowed-books', {
+    fetch('https://y-nine-blush.vercel.app/borrowed-books', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

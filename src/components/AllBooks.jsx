@@ -10,7 +10,7 @@ const AllBooks = () => {
   const [viewMode, setViewMode] = useState('card'); // 'card' or 'table'
 
   useEffect(() => {
-    fetch('http://localhost:3000/books') 
+    fetch('https://y-nine-blush.vercel.app/books') 
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch');
         return res.json();

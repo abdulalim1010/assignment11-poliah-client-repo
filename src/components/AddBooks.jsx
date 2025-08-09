@@ -10,45 +10,78 @@ const AddBook = () => {
     category: '',
     description: '',
     rating: '',
-    image: null
+    image: null,
   });
 
- const handleChange = e => {
-  const { name, value, type, files } = e.target;
-  if (type === "file") {
-    console.log("Selected file:", files[0]);
-    setFormData({ ...formData, image: files[0] });
-  } else {
-    setFormData({ ...formData, [name]: value });
-  }
-};
+  // Use your environment variable for ImgBB API key
+  const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
 
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    if (type === "file") {
+      setFormData({ ...formData, image: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  // Upload image to ImgBB and return the URL
+  const uploadImageToImgBB = async (imageFile) => {
+    const data = new FormData();
+    data.append("image", imageFile);
+    const response = await fetch(
+      `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const result = await response.json();
+    if (result.success) {
+      return result.data.url;
+    } else {
+      throw new Error("Image upload failed");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      console.log("Form submitted");
-  console.log(formData);
-
-    const data = new FormData();
-
-    // Append fields except image first
-    Object.entries(formData).forEach(([key, value]) => {
-      if (key !== 'image') {
-        data.append(key, value);
-      }
-    });
-
-    // Append image only if exists
-    if (formData.image) {
-      data.append('image', formData.image);
-    }
 
     try {
-      await axios.post('http://localhost:3000/books', data, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      if (!formData.image) {
+        toast.error("Please select an image.");
+        return;
+      }
+
+      // Upload the image to ImgBB first
+      const imageUrl = await uploadImageToImgBB(formData.image);
+
+      // Prepare book data with uploaded image URL
+      const bookData = {
+        name: formData.name,
+        quantity: formData.quantity,
+        author: formData.author,
+        category: formData.category,
+        description: formData.description,
+        rating: formData.rating,
+        imageUrl,
+      };
+
+      // Send book data to your backend
+      await axios.post("http://localhost:3000/books", bookData);
+
       toast.success("✅ Book added successfully!");
-      setFormData({ name: '', quantity: '', author: '', category: '', description: '', rating: '', image: null });
+
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        quantity: '',
+        author: '',
+        category: '',
+        description: '',
+        rating: '',
+        image: null,
+      });
     } catch (err) {
       toast.error("❌ Failed to add book.");
       console.error(err);
@@ -59,7 +92,7 @@ const AddBook = () => {
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6">
       <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">📚 Add a New Book</h2>
       <form onSubmit={handleSubmit} className="space-y-5" encType="multipart/form-data">
-        
+
         {/* Book Image */}
         <div>
           <label className="block font-medium mb-1">Book Cover</label>
@@ -165,10 +198,7 @@ const AddBook = () => {
 
         {/* Submit Button */}
         <div className="text-center">
-          <button
-            type="submit"
-            className="btn btn-primary w-full"
-          >
+          <button type="submit" className="btn btn-primary w-full">
             ➕ Add Book
           </button>
         </div>

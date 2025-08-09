@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router";
 import RootLayOut from '../components/RootLayOut';
 import Home from '../components/home/Home';
 import Login from '../components/login/Login';
-import SignIn from '../components/login/SignIn';
+
 import AllBooks from '../components/AllBooks';
 import CategoryBooks from '../components/CategoryBooks';
 import BookDetails from '../components/BookDetails';
@@ -13,6 +13,7 @@ import AddBooks from '../components/AddBooks';
 import BorrowedBooks from '../components/BorrowedBooks';
 import PrivateRouts from '../routs/PrivateRouts';
 import AddBook from '../components/AddBooks';
+import Register from '../components/login/Register';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/signIn',
-        Component: SignIn,
+        Component:Register,
       },
       {
         path: '/all-books',

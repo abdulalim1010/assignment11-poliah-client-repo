@@ -30,7 +30,7 @@ const BookDetails = () => {
       borrowedAt: new Date().toISOString(),
     };
 
-    fetch('https://y-nine-blush.vercel.app/borrowed-books', {
+    fetch('http://localhost:3000/books/borrowed-books', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

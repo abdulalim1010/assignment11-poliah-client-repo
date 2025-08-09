@@ -17,7 +17,7 @@ const MyBooks = () => {
       .then(data => setBooks(data));
   }, []);
   return (
-    <div>
+    <div className='bg-gray-100'>
        <div>
         <h1 className='text-5xl  text-center font-bold my-6'>Online Public Access Library</h1>
        

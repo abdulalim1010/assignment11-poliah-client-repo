@@ -1,29 +1,36 @@
-import Lottie from 'lottie-react';
 import React, { useContext } from 'react';
+import Lottie from 'lottie-react';
+import { useForm } from 'react-hook-form';
 import loginimage from '../../assets/Alonimation - 1749876095525.json';
 import { Authcontext } from '../navbar/authcontext/Authcontext';
 import SocialLogin from './socialLogin/SocialLogin';
-import { useLocation } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 
 const Login = () => {
   const { createUser } = useContext(Authcontext);
   const location = useLocation();
-  console.log("location in sign page",location)
+  const navigate = useNavigate();
 
-  const handleLogin = e => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting }
+  } = useForm();
 
-    createUser(email, password)
-      .then(result => {
-        console.log(result.user);
-      })
-      .catch(error => {
-        console.log(error.message);
-      });
+  const onSubmit = async data => {
+    const { email, password } = data;
+
+    try {
+      const result = await createUser(email, password);
+      console.log(result.user);
+
+      // Navigate after login success, e.g. to previous page or home
+      const from = location.state?.from?.pathname || '/';
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.error(error.message);
+      // You can show error toast here
+    }
   };
 
   return (
@@ -35,18 +42,47 @@ const Login = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <h1 className="text-5xl px-3 py-6 font-bold">Login Now!</h1>
           <div className="card-body">
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <fieldset className="fieldset">
                 <label className="label">Email</label>
-                <input type="email" className="input" name="email" placeholder="Email" required />
-                <label className="label">Password</label>
-                <input type="password" name="password" className="input" placeholder="Password" required />
-                <div><a className="link link-hover">Forgot password?</a></div>
-                <button type="submit" className="btn btn-neutral mt-4">Login</button>
+                <input
+                  type="email"
+                  className="input"
+                  placeholder="Email"
+                  {...register('email', { required: "Email is required" })}
+                />
+                {errors.email && <p className="text-red-600 mt-1">{errors.email.message}</p>}
+
+                <label className="label mt-4">Password</label>
+                <input
+                  type="password"
+                  className="input"
+                  placeholder="Password"
+                  {...register('password', {
+                    required: "Password is required",
+                    minLength: { value: 6, message: "Password must be at least 6 characters" }
+                  })}
+                />
+                {errors.password && <p className="text-red-600 mt-1">{errors.password.message}</p>}
+
+                <div>
+                  <a className="link link-hover">Forgot password?</a>
+                </div>
+
+                <button type="submit" disabled={isSubmitting} className="btn btn-neutral mt-4">
+                  {isSubmitting ? 'Logging in...' : 'Login'}
+                </button>
               </fieldset>
             </form>
+
+            <div className="flex mt-4">
+              <h1 className="font-bold">You have no account? Please</h1>
+              <NavLink to="/signIn">
+                <span className="text-blue-500 ml-3 font-bold">Register</span>
+              </NavLink>
+            </div>
           </div>
-          <SocialLogin></SocialLogin>
+          <SocialLogin />
         </div>
       </div>
     </div>

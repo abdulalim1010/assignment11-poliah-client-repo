@@ -20,12 +20,15 @@ const {user,signOutUser}=use(Authcontext)
 
 
 
-  const links =  <>
+  const links = <>
   <li>
     <NavLink 
       to="/"  
-      className={({ isActive }) => isActive ? "active-link text-red-600  hover:text-blue-700" : ""}
-      end // important for exact matching on "/"
+      className={({ isActive }) =>
+        `relative px-3 py-2 text-white text-xl font-bold transition-all duration-300 hover:underline hover:underline-offset-8 
+        ${isActive ? "text-yellow-300 font-semibold" : ""}`
+      }
+      end
     >
       Home
     </NavLink>
@@ -33,7 +36,10 @@ const {user,signOutUser}=use(Authcontext)
   <li>
     <NavLink 
       to="/all-books"
-      className={({ isActive }) => isActive ? "active-link text-blue-500" : ""}
+      className={({ isActive }) =>
+        `relative px-3 py-2 text-white text-xl font-bold  transition-all duration-300 hover:underline hover:underline-offset-8 
+        ${isActive ? "text-yellow-300 font-semibold" : ""}`
+      }
     >
       All Books
     </NavLink>
@@ -41,7 +47,10 @@ const {user,signOutUser}=use(Authcontext)
   <li>
     <NavLink 
       to="/my-books"
-      className={({ isActive }) => isActive ? "active-link text-blue-500" : ""}
+      className={({ isActive }) =>
+        `relative px-3 py-2 text-white text-xl font-bold  transition-all duration-300 hover:underline hover:underline-offset-8 
+        ${isActive ? "text-yellow-300 font-semibold" : ""}`
+      }
     >
       My Books
     </NavLink>
@@ -49,7 +58,10 @@ const {user,signOutUser}=use(Authcontext)
   <li>
     <NavLink 
       to="/add-books"
-      className={({ isActive }) => isActive ? "active-link text-blue-500" : ""}
+      className={({ isActive }) =>
+        `relative px-3 py-2 text-white text-xl font-bold  transition-all duration-300 hover:underline hover:underline-offset-8 
+        ${isActive ? "text-yellow-300 font-semibold" : ""}`
+      }
     >
       Add Books
     </NavLink>
@@ -57,15 +69,19 @@ const {user,signOutUser}=use(Authcontext)
   <li>
     <NavLink 
       to="/borrowed-books"
-      className={({ isActive }) => isActive ? "active-link text-blue-500" : ""}
+      className={({ isActive }) =>
+        `relative px-3 py-2 text-white text-xl font-bold  transition-all duration-300 hover:underline hover:underline-offset-8 
+        ${isActive ? "text-yellow-300 font-semibold" : ""}`
+      }
     >
       Borrowed Books
     </NavLink>
   </li>
 </>
+
   return (
-    <div className='w-11/12 mx-auto mt-9'>
-      <div className="navbar bg-blue-50 shadow-sm">
+    <div className='w-full mt-9'>
+      <div className="navbar bg-blue-500 shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -77,7 +93,7 @@ const {user,signOutUser}=use(Authcontext)
        {links}
       </ul>
     </div>
-          <a className="btn btn-ghost text-4xl font-bold text-green-800">  My Books<img src={logoimage} className='w-15 h-10' alt="" /></a>
+          <a className="btn btn-ghost text-4xl font-bold text-white">  My Books<img src={logoimage} className='w-15 h-10' alt="" /></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -85,11 +101,16 @@ const {user,signOutUser}=use(Authcontext)
     </ul>
   </div>
   <div className="navbar-end">
-          {
-            user?<button onClick={hanldeLogout} className='btn btn-active pr-3'>logout</button>:<><NavLink className="btn " to={'/login'}>Login</NavLink>
-            <NavLink className="btn " to={'/signin'}>SignIn</NavLink></>
+  {
+    user
+      ? <button onClick={hanldeLogout} className='btn btn-active bg-white pr-3'>Logout</button>
+      : <>
+          <NavLink className="btn" to={'/login'}>Login</NavLink>
+         
+        </>
   }
-  </div>
+</div>
+
 </div>
     </div>
   );

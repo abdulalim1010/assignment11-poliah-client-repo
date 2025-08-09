@@ -10,7 +10,7 @@ const AllBooks = () => {
   const [viewMode, setViewMode] = useState('card'); // 'card' or 'table'
 
   useEffect(() => {
-    fetch('https://y-nine-blush.vercel.app/books') 
+    fetch('http://localhost:3000/books') 
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch');
         return res.json();
@@ -37,7 +37,7 @@ const AllBooks = () => {
   const text = " ALL THE AVAILABLE BOOKS HERE — ";
 
   return (
-    <div className="w-11/12 mx-auto mt-9">
+    <div className="w-11/12 mx-auto bg-gray-200 mt-9">
       {/* Animated Text */}
       <div style={{ overflow: "hidden", whiteSpace: "nowrap" }} className="bg-white mb-6">
         <motion.div
@@ -89,7 +89,7 @@ const AllBooks = () => {
       {/* Conditional Rendering */}
       {filteredBooks.length > 0 ? (
         viewMode === 'card' ? (
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
             {filteredBooks.map(book => <Book key={book._id} book={book} />)}
           </div>
         ) : (

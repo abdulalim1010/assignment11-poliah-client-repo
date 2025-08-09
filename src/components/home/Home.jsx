@@ -12,7 +12,7 @@ import StatsCard from '../StatsCard';
 const Home = () => {
   return (
     <div>
-      <div className=''>
+      <div className='bg-gray-100'>
         <Hero/>
       </div>
       <div className='lg:flex justify-center w-11/12 mx-auto items-center gap-4 mt-5 bg-pink-100 p-6'>

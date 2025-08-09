@@ -7,7 +7,7 @@ import Lottie from 'lottie-react';
 
 const Hero = () => {
   return (
-    <div className="lg:flex w-11/12 mt-5 bg-green-100 items-center justify-between p-6 mx-auto">
+    <div className="lg:flex w-11/12 mt-5 bg-white items-center justify-between p-6 mx-auto">
       {/* Text Section */}
       <div className="w-4/12">
         <Lottie style={{ width: "300px", height: "300px" }} animationData={logoimaghe}> loop={true}

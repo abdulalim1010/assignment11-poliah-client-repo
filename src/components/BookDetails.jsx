@@ -9,7 +9,8 @@ const BookDetails = () => {
   const { user } = useContext(Authcontext);
 
   useEffect(() => {
-    fetch(`https://y-nine-blush.vercel.app/books/${id}`)
+    // Update URL to your backend single book endpoint
+    fetch(`http://localhost:3000/books/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Book not found');
         return res.json();
@@ -20,7 +21,7 @@ const BookDetails = () => {
 
   const handleBorrow = () => {
     if (!user) {
-      navigate('/login'); // 🔁 Redirect to login page
+      navigate('/login'); // Redirect to login if not logged in
       return;
     }
 
@@ -52,16 +53,25 @@ const BookDetails = () => {
 
   return (
     <div className="p-8 max-w-3xl mx-auto">
-      <div className="card shadow-md p-6 bg-white">
-        <img src={book.image} alt={book.title} className="w-full h-80 object-cover mb-4" />
-        <h2 className="text-3xl font-bold mb-2">{book.title}</h2>
+      <div className="card shadow-md p-6 bg-white rounded-lg">
+        <img
+          src={book.imageUrl}
+          alt={book.name}
+          className="w-full h-80 object-cover mb-4 rounded-md"
+        />
+        <h2 className="text-3xl font-bold mb-2">{book.name}</h2>
         <p className="mb-1"><strong>Author:</strong> {book.author}</p>
         <p className="mb-1"><strong>Category:</strong> {book.category}</p>
         <p className="mb-1"><strong>Quantity:</strong> {book.quantity}</p>
         <p className="mb-1"><strong>Rating:</strong> {book.rating}</p>
-        <div className='flex justify-between'>
-          <button onClick={() => navigate('/')} className="btn btn-secondary mt-4">← Back to Book List</button>
-          <button onClick={handleBorrow} className="btn btn-primary mt-4">Borrow This Book</button>
+        <p className="mb-4"><strong>Description:</strong> {book.description}</p>
+        <div className="flex justify-between mt-6">
+          <button onClick={() => navigate('/')} className="btn btn-secondary">
+            ← Back to Book List
+          </button>
+          <button onClick={handleBorrow} className="btn btn-primary">
+            Borrow This Book
+          </button>
         </div>
       </div>
     </div>

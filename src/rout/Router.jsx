@@ -6,7 +6,7 @@ import Login from '../components/login/Login';
 
 import AllBooks from '../components/AllBooks';
 import CategoryBooks from '../components/CategoryBooks';
-import BookDetails from '../components/BookDetails';
+
 import MyBooks from '../components/MyBooks';
 
 import AddBooks from '../components/AddBooks';
@@ -14,6 +14,7 @@ import BorrowedBooks from '../components/BorrowedBooks';
 import PrivateRouts from '../routs/PrivateRouts';
 import AddBook from '../components/AddBooks';
 import Register from '../components/login/Register';
+import BookDetails from '../components/BookDetails';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
         path: '/all-books',
         Component: AllBooks,
       },
+      
       {
         path: '/my-books',
         Component: MyBooks,
@@ -68,7 +70,7 @@ const router = createBrowserRouter([
         Component: CategoryBooks,
       },
       {
-        path: '/book/:id',
+        path: '/books/:id',
         Component: BookDetails,
       },
     ],

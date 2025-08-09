@@ -12,9 +12,13 @@ const AddBook = () => {
     rating: '',
     image: null,
   });
+  const [loading, setLoading] = useState(false);
 
-  // Use your environment variable for ImgBB API key
-  const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
+  const imgbbKey = import.meta.env.VITE_IMGBB_API_KEY;
+
+  if (!imgbbKey) {
+    console.error("ImgBB API key is missing! Please check your .env file.");
+  }
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -25,7 +29,6 @@ const AddBook = () => {
     }
   };
 
-  // Upload image to ImgBB and return the URL
   const uploadImageToImgBB = async (imageFile) => {
     const data = new FormData();
     data.append("image", imageFile);
@@ -46,33 +49,33 @@ const AddBook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       if (!formData.image) {
         toast.error("Please select an image.");
+        setLoading(false);
         return;
       }
 
-      // Upload the image to ImgBB first
+      // Upload image and get URL
       const imageUrl = await uploadImageToImgBB(formData.image);
 
-      // Prepare book data with uploaded image URL
+      // Prepare book data with numbers parsed
       const bookData = {
         name: formData.name,
-        quantity: formData.quantity,
+        quantity: Number(formData.quantity),
         author: formData.author,
         category: formData.category,
         description: formData.description,
-        rating: formData.rating,
+        rating: Number(formData.rating),
         imageUrl,
       };
 
-      // Send book data to your backend
+      // Send to backend
       await axios.post("http://localhost:3000/books", bookData);
 
       toast.success("✅ Book added successfully!");
-
-      // Reset form after successful submission
       setFormData({
         name: '',
         quantity: '',
@@ -86,6 +89,7 @@ const AddBook = () => {
       toast.error("❌ Failed to add book.");
       console.error(err);
     }
+    setLoading(false);
   };
 
   return (
@@ -102,11 +106,12 @@ const AddBook = () => {
             accept="image/*"
             onChange={handleChange}
             required
+            disabled={loading}
             className="block w-full border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
           />
         </div>
 
-        {/* Book Name */}
+        {/* Book Title */}
         <div>
           <label className="block font-medium mb-1">Book Title</label>
           <input
@@ -116,6 +121,7 @@ const AddBook = () => {
             value={formData.name}
             onChange={handleChange}
             required
+            disabled={loading}
             className="input input-bordered w-full"
           />
         </div>
@@ -130,6 +136,7 @@ const AddBook = () => {
             value={formData.quantity}
             onChange={handleChange}
             required
+            disabled={loading}
             className="input input-bordered w-full"
           />
         </div>
@@ -144,6 +151,7 @@ const AddBook = () => {
             value={formData.author}
             onChange={handleChange}
             required
+            disabled={loading}
             className="input input-bordered w-full"
           />
         </div>
@@ -156,6 +164,7 @@ const AddBook = () => {
             value={formData.category}
             onChange={handleChange}
             required
+            disabled={loading}
             className="select select-bordered w-full"
           >
             <option value="">Select a category</option>
@@ -176,6 +185,7 @@ const AddBook = () => {
             value={formData.description}
             onChange={handleChange}
             required
+            disabled={loading}
             className="textarea textarea-bordered w-full"
           />
         </div>
@@ -192,14 +202,19 @@ const AddBook = () => {
             value={formData.rating}
             onChange={handleChange}
             required
+            disabled={loading}
             className="input input-bordered w-full"
           />
         </div>
 
         {/* Submit Button */}
         <div className="text-center">
-          <button type="submit" className="btn btn-primary w-full">
-            ➕ Add Book
+          <button
+            type="submit"
+            className="btn btn-primary w-full"
+            disabled={loading}
+          >
+            {loading ? "Uploading..." : "➕ Add Book"}
           </button>
         </div>
       </form>

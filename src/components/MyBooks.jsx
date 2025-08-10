@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MYBookCard from './MYBookCard';
 import { div } from 'framer-motion/client';
-import StatsCard from './StatsCard';
+
 import imageone from '../assets/1nimation - 1749895367533.json'
 import image2 from '../assets/2nimation - 1749895320042.json'
 import imagelogo from '../assets/logo.jpg'
@@ -31,8 +31,13 @@ const MyBooks = () => {
           <Lottie style={{width:'200px',height:'200px'}}animationData={image2} loop={true} auatoplay={true}></Lottie>
 
         </div>
-        <StatsCard></StatsCard>
-          </div>
+        
+     
+      </div>
+      <div>
+        <h1 className='text-5xl font-bold text-center mt-8 mb-6 items-center'>My All The Books Suggest Where</h1>
+      </div>
+      
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-11/12 mx-auto gap-6 p-6">
       {
         books.map(book => <MYBookCard book={book} key={book.id}></MYBookCard>)

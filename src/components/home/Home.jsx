@@ -8,6 +8,8 @@ import h3image from '../../assets/Ah3nimation - 1749873576967.json'
 
 import Lottie from 'lottie-react';
 import StatsCard from '../StatsCard';
+import LibraryCards from './LibraryCards';
+import BlogsSection from './BlogsSection';
 
 const Home = () => {
   return (
@@ -28,6 +30,12 @@ const Home = () => {
 
         <BookCategories></BookCategories>
       </main>
+      <div>
+        <LibraryCards/>
+      </div>
+      <div>
+        <BlogsSection/>
+    </div>
       <div>
      <StatsCard></StatsCard>
       </div>

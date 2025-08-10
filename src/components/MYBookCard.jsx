@@ -1,3 +1,4 @@
+import { div } from 'framer-motion/client';
 import React from 'react';
 import { NavLink } from 'react-router'; // ✅ Use 'react-router-dom' not 'react-router'
 
@@ -5,7 +6,9 @@ const MYBookCard = ({ book }) => {
   const { title, author, description, rating, publishedDate, image } = book;
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 flex flex-col justify-between h-full">
+    <div>
+      
+       <div className="bg-white shadow-md rounded-lg p-4 flex flex-col justify-between h-full">
       <img
         src={image}
         alt={title}
@@ -26,6 +29,8 @@ const MYBookCard = ({ book }) => {
         </NavLink>
       </div>
     </div>
+    </div>
+    
   );
 };
 

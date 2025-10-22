@@ -1,157 +1,159 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { NavLink } from 'react-router';
-import logoimage from '../../assets/lai.png';
-import { Authcontext } from './authcontext/Authcontext';
+import React, { useContext, useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import logoimage from "../../assets/lai.png";
+import { Authcontext } from "./authcontext/Authcontext";
 
 const themes = [
-  { background: '#3b82f6', text: '#ffffff', name: 'Blue' },       // blue
-  { background: '#10b981', text: '#ffffff', name: 'Green' },      // green
-  { background: '#f59e0b', text: '#000000', name: 'Yellow' },     // yellow
-  { background: '#ef4444', text: '#ffffff', name: 'Red' },        // red
+  { background: "#3b82f6", text: "#ffffff", name: "Blue" },
+  { background: "#10b981", text: "#ffffff", name: "Green" },
+  { background: "#f59e0b", text: "#000000", name: "Yellow" },
+  { background: "#ef4444", text: "#ffffff", name: "Red" },
 ];
 
 const NavBar = () => {
   const { user, signOutUser } = useContext(Authcontext);
-
   const [themeIndex, setThemeIndex] = useState(0);
+  const [showNav, setShowNav] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
+  // Theme effect
   useEffect(() => {
     const theme = themes[themeIndex];
     document.body.style.backgroundColor = theme.background;
     document.body.style.color = theme.text;
   }, [themeIndex]);
 
-  const hanldeLogout = () => {
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 50) {
+        setShowNav(false);
+      } else {
+        setShowNav(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  const handleLogout = () => {
     signOutUser()
-      .then(() => {
-        console.log('User logged out');
-      })
-      .catch(error => {
-        console.error('Error logging out:', error);
-      });
+      .then(() => console.log("User logged out"))
+      .catch((err) => console.error(err));
   };
 
   const toggleTheme = () => {
     setThemeIndex((prev) => (prev + 1) % themes.length);
   };
 
-  const links = (
-    <>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `relative px-3 py-2 text-white text-xl font-bold transition-all duration-300 hover:underline hover:underline-offset-8 
-            ${isActive ? "text-yellow-300 font-semibold" : ""}`
-          }
-          end
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/all-books"
-          className={({ isActive }) =>
-            `relative px-3 py-2 text-white text-xl font-bold  transition-all duration-300 hover:underline hover:underline-offset-8 
-            ${isActive ? "text-yellow-300 font-semibold" : ""}`
-          }
-        >
-          All Books
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-books"
-          className={({ isActive }) =>
-            `relative px-3 py-2 text-white text-xl font-bold  transition-all duration-300 hover:underline hover:underline-offset-8 
-            ${isActive ? "text-yellow-300 font-semibold" : ""}`
-          }
-        >
-          My Books
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/add-books"
-          className={({ isActive }) =>
-            `relative px-3 py-2 text-white text-xl font-bold  transition-all duration-300 hover:underline hover:underline-offset-8 
-            ${isActive ? "text-yellow-300 font-semibold" : ""}`
-          }
-        >
-          Add Books
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/borrowed-books"
-          className={({ isActive }) =>
-            `relative px-3 py-2 text-white text-xl font-bold  transition-all duration-300 hover:underline hover:underline-offset-8 
-            ${isActive ? "text-yellow-300 font-semibold" : ""}`
-          }
-        >
-          Borrowed Books
-        </NavLink>
-      </li>
-    </>
-  );
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "All Books", path: "/all-books" },
+    { name: "My Books", path: "/my-books" },
+    { name: "Add Books", path: "/add-books" },
+    { name: "Borrowed Books", path: "/borrowed-books" },
+  ];
 
   return (
-    <div className='w-full mt-9'>
-      <div className="navbar shadow-sm" style={{ backgroundColor: themes[themeIndex].background }}>
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> 
-              </svg>
+    <>
+      {/* Navbar */}
+      <div
+        className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 backdrop-blur-md bg-white/20 shadow-lg`}
+        style={{ transform: showNav ? "translateY(0)" : "translateY(-100%)", height: "70px" }}
+      >
+        <div className="flex justify-between items-center h-full px-5 lg:px-16">
+          {/* Logo + Mobile Dropdown */}
+          <div className="flex items-center gap-4">
+            <div className="dropdown lg:hidden">
+              <label tabIndex={0} className="btn btn-ghost p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-black"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                {links.map((link, i) => (
+                  <li key={i}>
+                    <NavLink
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `font-semibold ${isActive ? "text-yellow-500" : ""}`
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              {links}
+            <NavLink to="/" className="flex items-center gap-2 text-2xl font-bold text-black">
+              <img src={logoimage} className="w-12 h-10" alt="Logo" />
+              My Books
+            </NavLink>
+          </div>
+
+          {/* Desktop Links */}
+          <div className="hidden lg:flex">
+            <ul className="menu menu-horizontal px-1 gap-4">
+              {links.map((link, i) => (
+                <li key={i}>
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `px-4 py-2 rounded font-semibold transition-colors duration-300 hover:bg-black hover:text-white ${
+                        isActive ? "bg-black text-white" : "text-black"
+                      }`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
-          <a className="btn btn-ghost text-4xl font-bold text-white">
-            My Books
-            <img src={logoimage} className='w-15 h-10 ml-2' alt="Logo" />
-          </a>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {links}
-          </ul>
-        </div>
-        <div className="navbar-end flex items-center space-x-3">
-          <button
-            onClick={toggleTheme}
-            style={{
-              padding: "0.5rem 1rem",
-              backgroundColor: "rgba(255,255,255,0.2)",
-              color: "white",
-              borderRadius: "5px",
-              cursor: "pointer",
-              transition: "background-color 0.3s ease"
-            }}
-            title={`Switch to ${themes[(themeIndex + 1) % themes.length].name} theme`}
-          
-          className='text-black bg-white'>
-            Theme: {themes[themeIndex].name}
-          </button>
 
-          {user ? (
-            <button onClick={hanldeLogout} className='btn btn-active bg-white text-blue-600'>
-              Logout
+          {/* Buttons */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="btn btn-sm bg-black text-white hover:bg-gray-800 transition-colors"
+              title={`Switch to ${themes[(themeIndex + 1) % themes.length].name} theme`}
+            >
+              Theme: {themes[themeIndex].name}
             </button>
-          ) : (
-            <NavLink className="btn" to={'/login'}>
-              Login
-            </NavLink>
-          )}
+
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="btn btn-sm bg-yellow-500 text-white hover:bg-yellow-600 transition-colors"
+              >
+                Logout
+              </button>
+            ) : (
+              <NavLink
+                to="/login"
+                className="btn btn-sm bg-yellow-500 text-white hover:bg-yellow-600 transition-colors"
+              >
+                Login
+              </NavLink>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Spacer for content */}
+      <div style={{ height: "70px" }} />
+    </>
   );
 };
 

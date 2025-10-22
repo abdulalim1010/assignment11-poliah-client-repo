@@ -13,9 +13,11 @@ import BlogsSection from './BlogsSection';
 
 const Home = () => {
   return (
-    <div>
-      <div className=''>
+    <div className='mb-10'>
+      <div >
         <Hero/>
+      
+
       </div>
       <div className='lg:flex justify-center w-11/12 mx-auto items-center gap-4 mt-5 bg-pink-100 p-6'>
       <Lottie style={{width:'400px'}} animationData={h1image } loop={true}></Lottie>

@@ -1,10 +1,10 @@
-import React from 'react';
-import hero1 from '../../assets/librray hero.jpg';
-import hero2 from '../../assets/hero2.jpg';
-import hero3 from '../../assets/hero3.jfif';
-import logoAnimation from '../../assets/Alogomation - 1749878657537.json';
+import React from "react";
+import hero1 from "../../assets/librray hero.jpg";
+import hero2 from "../../assets/hero2.jpg";
+import hero3 from "../../assets/hero3.jfif";
+import logoAnimation from "../../assets/Alogomation - 1749878657537.json";
 import { motion } from "framer-motion";
-import Lottie from 'lottie-react';
+import Lottie from "lottie-react";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -38,7 +38,7 @@ const Hero = () => {
     infinite: true,
     speed: 1000,
     fade: true,
-    cssEase: 'linear',
+    cssEase: "linear",
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -49,32 +49,42 @@ const Hero = () => {
   };
 
   return (
-    <div className="lg:flex w-11/12 mt-5 bg-white items-center justify-between p-6 mx-auto">
-      {/* Text Section */}
-      <div className="w-full lg:w-4/12">
-        <Lottie
-          style={{ width: "300px", height: "300px" }}
-          animationData={logoAnimation}
-          loop={true}
-        />
+    <div className="lg:flex w-11/12 mt-8 items-center justify-between mx-auto gap-10">
+      {/* Left Section (Text + Lottie) */}
+      <div className="w-full lg:w-5/12 flex flex-col items-center lg:items-start text-center lg:text-left">
+        {/* 🔹 Rounded Lottie */}
+        <div className="p-3 bg-base-100 rounded-full shadow-xl border-4 border-primary/50 overflow-hidden mb-4">
+          <Lottie
+            animationData={logoAnimation}
+            loop={true}
+            style={{ width: "250px", height: "250px", borderRadius: "50%" }}
+          />
+        </div>
+
+        {/* 🔹 Animated Heading */}
         <motion.h1
-          animate={{ rotate: [0, 5, -5, 0], color: ["#f00", "#0f0", "#00f", "#f00"] }}
+          animate={{
+            rotate: [0, 3, -3, 0],
+            color: ["#facc15", "#f97316", "#0ea5e9", "#facc15"],
+          }}
           transition={{ duration: 3, repeat: Infinity }}
-          style={{ fontSize: "4.5rem", fontWeight: "bold" }}
-          className="text-7xl font-bold"
+          className="text-5xl md:text-6xl font-bold text-base-content"
         >
           Hello, the Book
         </motion.h1>
-        <p className="mt-2 text-3xl text-gray-600">Welcome to your library!</p>
+
+        <p className="mt-3 text-xl text-base-content/70">
+          Welcome to your personal digital library!
+        </p>
       </div>
 
-      {/* Slider Section */}
-      <div className="w-full lg:w-8/12 ml-auto">
+      {/* Right Section (Image Slider) */}
+      <div className="w-full lg:w-7/12 mt-10 lg:mt-0">
         <Slider {...sliderSettings}>
           {[hero1, hero2, hero3].map((img, index) => (
-            <div key={index}>
+            <div key={index} className="px-2">
               <img
-                className="rounded-t-[40px] rounded-br-4xl border-s-12 border-b-12 border-blue-500 shadow-2xl w-full h-[450px] object-cover"
+                className="rounded-[35px] border-[6px] border-primary/70 shadow-2xl w-full h-[400px] object-cover"
                 src={img}
                 alt={`Library Banner ${index + 1}`}
               />

@@ -17,7 +17,7 @@ const MyBooks = () => {
       .then(data => setBooks(data));
   }, []);
   return (
-    <div className='bg-gray-100'>
+    <div >
        <div>
         <h1 className='text-5xl  text-center font-bold my-6'>Online Public Access Library</h1>
        
@@ -38,7 +38,7 @@ const MyBooks = () => {
         <h1 className='text-5xl font-bold text-center mt-8 mb-6 items-center'>My All The Books Suggest Where</h1>
       </div>
       
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-11/12 mx-auto gap-6 p-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-11/12 mx-auto gap-6 ">
       {
         books.map(book => <MYBookCard book={book} key={book.id}></MYBookCard>)
       }

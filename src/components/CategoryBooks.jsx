@@ -9,7 +9,7 @@ const CategoryBooks = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://y-nine-blush.vercel.app/books')
+    fetch('https://assignment-polish-eleven.vercel.app/books')
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(book =>

@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import Lottie from 'lottie-react';
-import { useForm } from 'react-hook-form';
-import loginimage from '../../assets/Alonimation - 1749876095525.json';
-import { Authcontext } from '../navbar/authcontext/Authcontext';
-import SocialLogin from './socialLogin/SocialLogin';
-import { NavLink, useLocation, useNavigate } from 'react-router';
+import React, { useContext } from "react";
+import Lottie from "lottie-react";
+import { useForm } from "react-hook-form";
+import loginimage from "../../assets/Alonimation - 1749876095525.json";
+import { Authcontext } from "../navbar/authcontext/Authcontext";
+import SocialLogin from "./socialLogin/SocialLogin";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { createUser } = useContext(Authcontext);
@@ -14,76 +14,111 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     const { email, password } = data;
-
     try {
       const result = await createUser(email, password);
-      console.log(result.user);
-
-      // Navigate after login success, e.g. to previous page or home
-      const from = location.state?.from?.pathname || '/';
+      const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
     } catch (error) {
       console.error(error.message);
-      // You can show error toast here
     }
   };
 
   return (
-    <div className="hero bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <Lottie style={{ width: '400px' }} animationData={loginimage} loop={true} />
-        </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h1 className="text-5xl px-3 py-6 font-bold">Login Now!</h1>
-          <div className="card-body">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <fieldset className="fieldset">
-                <label className="label">Email</label>
-                <input
-                  type="email"
-                  className="input"
-                  placeholder="Email"
-                  {...register('email', { required: "Email is required" })}
-                />
-                {errors.email && <p className="text-red-600 mt-1">{errors.email.message}</p>}
+    <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center  transition-colors duration-300 px-6 py-10">
+      {/* Lottie Animation */}
+      <div className="flex justify-center items-center w-full lg:w-1/2 mb-8 lg:mb-0">
+        <Lottie
+          animationData={loginimage}
+          loop={true}
+          style={{ width: "80%", maxWidth: "420px" }}
+        />
+      </div>
 
-                <label className="label mt-4">Password</label>
-                <input
-                  type="password"
-                  className="input"
-                  placeholder="Password"
-                  {...register('password', {
-                    required: "Password is required",
-                    minLength: { value: 6, message: "Password must be at least 6 characters" }
-                  })}
-                />
-                {errors.password && <p className="text-red-600 mt-1">{errors.password.message}</p>}
+      {/* Form Section */}
+      <div className="w-full max-w-md lg:w-[420px] flex flex-col justify-center  p-8 rounded-2xl shadow-lg">
+        <h1 className="text-4xl font-bold text-center text-base-content mb-6">
+          Login Now!
+        </h1>
 
-                <div>
-                  <a className="link link-hover">Forgot password?</a>
-                </div>
-
-                <button type="submit" disabled={isSubmitting} className="btn btn-neutral mt-4">
-                  {isSubmitting ? 'Logging in...' : 'Login'}
-                </button>
-              </fieldset>
-            </form>
-
-            <div className="flex mt-4">
-              <h1 className="font-bold">You have no account? Please</h1>
-              <NavLink to="/signIn">
-                <span className="text-blue-500 ml-3 font-bold">Register</span>
-              </NavLink>
-            </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+          {/* Email */}
+          <div>
+            <label className="block font-semibold mb-2 text-base-content">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="input input-bordered w-full"
+              {...register("email", { required: "Email is required" })}
+            />
+            {errors.email && (
+              <p className="text-error text-sm mt-1">{errors.email.message}</p>
+            )}
           </div>
+
+          {/* Password */}
+          <div>
+            <label className="block font-semibold mb-2 text-base-content">
+              Password
+            </label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="input input-bordered w-full"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+            />
+            {errors.password && (
+              <p className="text-error text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+
+          <div className="flex justify-end">
+            <a className="link link-hover text-sm">Forgot password?</a>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="btn btn-primary w-full"
+          >
+            {isSubmitting ? "Logging in..." : "Login"}
+          </button>
+        </form>
+
+        <div className="text-center mt-6 text-base-content">
+          You have no account? Please{" "}
+          <NavLink
+            to="/signIn"
+            className="text-primary font-semibold hover:underline"
+          >
+            Register
+          </NavLink>
+        </div>
+
+        <div className="mt-8">
           <SocialLogin />
         </div>
+
+        <footer className="mt-10 text-center text-base-content/70 text-sm">
+          © 2025 - All rights reserved by{" "}
+          <span className="font-semibold text-primary">
+            ACME Industries Ltd
+          </span>
+        </footer>
       </div>
     </div>
   );

@@ -135,7 +135,8 @@ const NavBar = () => {
               transition: "background-color 0.3s ease"
             }}
             title={`Switch to ${themes[(themeIndex + 1) % themes.length].name} theme`}
-          >
+          
+          className='text-black bg-white'>
             Theme: {themes[themeIndex].name}
           </button>
 

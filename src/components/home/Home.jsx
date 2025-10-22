@@ -14,7 +14,7 @@ import BlogsSection from './BlogsSection';
 const Home = () => {
   return (
     <div>
-      <div className='bg-gray-100'>
+      <div className=''>
         <Hero/>
       </div>
       <div className='lg:flex justify-center w-11/12 mx-auto items-center gap-4 mt-5 bg-pink-100 p-6'>

@@ -8,9 +8,12 @@ const BookDetails = () => {
   const navigate = useNavigate();
   const { user } = useContext(Authcontext);
 
+  // New state for dates
+  const [borrowDate, setBorrowDate] = useState('');
+  const [returnDate, setReturnDate] = useState('');
+
   useEffect(() => {
-    // Update URL to your backend single book endpoint
-    fetch(`http://localhost:3000/books/${id}`)
+    fetch(`https://assignment-polish-eleven.vercel.app/books/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Book not found');
         return res.json();
@@ -25,10 +28,21 @@ const BookDetails = () => {
       return;
     }
 
+    if (!borrowDate || !returnDate) {
+      alert('Please select both borrow date and return date.');
+      return;
+    }
+
+    if (new Date(returnDate) <= new Date(borrowDate)) {
+      alert('Return date must be after borrow date.');
+      return;
+    }
+
     const borrowInfo = {
       userEmail: user.email,
       bookId: book._id,
-      borrowedAt: new Date().toISOString(),
+      borrowedAt: borrowDate,
+      returnAt: returnDate,
     };
 
     fetch('http://localhost:3000/books/borrowed-books', {
@@ -65,6 +79,31 @@ const BookDetails = () => {
         <p className="mb-1"><strong>Quantity:</strong> {book.quantity}</p>
         <p className="mb-1"><strong>Rating:</strong> {book.rating}</p>
         <p className="mb-4"><strong>Description:</strong> {book.description}</p>
+
+        {/* Date inputs */}
+        <div className="mb-4 flex gap-4">
+          <div>
+            <label className="block font-semibold mb-1">Borrow Date:</label>
+            <input
+              type="date"
+              value={borrowDate}
+              onChange={(e) => setBorrowDate(e.target.value)}
+              className="input input-bordered"
+              min={new Date().toISOString().split('T')[0]} // prevent past dates
+            />
+          </div>
+          <div>
+            <label className="block font-semibold mb-1">Return Date:</label>
+            <input
+              type="date"
+              value={returnDate}
+              onChange={(e) => setReturnDate(e.target.value)}
+              className="input input-bordered"
+              min={borrowDate || new Date().toISOString().split('T')[0]} // return date can't be before borrow date
+            />
+          </div>
+        </div>
+
         <div className="flex justify-between mt-6">
           <button onClick={() => navigate('/')} className="btn btn-secondary">
             ← Back to Book List

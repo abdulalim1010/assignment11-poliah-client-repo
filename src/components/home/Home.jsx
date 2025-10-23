@@ -10,6 +10,7 @@ import Lottie from 'lottie-react';
 import StatsCard from '../StatsCard';
 import LibraryCards from './LibraryCards';
 import BlogsSection from './BlogsSection';
+import UserExperience from '../../pages/UserExperience';
 
 const Home = () => {
   return (
@@ -40,6 +41,9 @@ const Home = () => {
     </div>
       <div>
      <StatsCard></StatsCard>
+      </div>
+      <div>
+        <UserExperience/>
       </div>
       
     </div>

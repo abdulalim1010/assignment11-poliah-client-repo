@@ -44,7 +44,7 @@ const UserExperience = () => {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:3000/api/feedback", {
+      const res = await fetch("-https://assignment-polish-eleven.vercel.app/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newFeedback),

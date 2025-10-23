@@ -11,6 +11,7 @@ import StatsCard from '../StatsCard';
 import LibraryCards from './LibraryCards';
 import BlogsSection from './BlogsSection';
 import UserExperience from '../../pages/UserExperience';
+import BookShowcase from '../../pages/BookShowcase';
 
 const Home = () => {
   return (
@@ -35,6 +36,9 @@ const Home = () => {
       </main>
       <div>
         <LibraryCards/>
+      </div>
+      <div>
+        <BookShowcase/>
       </div>
       <div>
         <BlogsSection/>

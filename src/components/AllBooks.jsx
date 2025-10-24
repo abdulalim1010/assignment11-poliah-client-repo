@@ -10,23 +10,24 @@ const AllBooks = () => {
   const [viewMode, setViewMode] = useState('card'); // 'card' or 'table'
 
   useEffect(() => {
-    fetch('https://assignment-polish-eleven.vercel.app/books') 
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch');
-        return res.json();
-      })
-      .then(data => {
+    const fetchBooks = async () => {
+      try {
+        const res = await fetch('https://assignment-polish-eleven.vercel.app/books');
+        if (!res.ok) throw new Error('Failed to fetch books from backend');
+        const data = await res.json();
         setBooks(data);
-        setLoading(false);
-      })
-      .catch(err => {
+      } catch (err) {
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchBooks();
   }, []);
 
-  if (loading) return <p className="text-center">Loading books...</p>;
-  if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+  if (loading) return <p className="text-center mt-10 text-xl">Loading books...</p>;
+  if (error) return <p className="text-center mt-10 text-red-500 text-xl">Error: {error}</p>;
 
   const filteredBooks = books.filter(book =>
     (book.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -47,18 +48,8 @@ const AllBooks = () => {
             color: ["#ff0000", "#00ff00", "#0000ff", "#ff0000"]
           }}
           transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 30,
-              ease: "linear"
-            },
-            color: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 30,
-              ease: "linear"
-            }
+            x: { repeat: Infinity, repeatType: "loop", duration: 30, ease: "linear" },
+            color: { repeat: Infinity, repeatType: "loop", duration: 30, ease: "linear" }
           }}
         >
           <span className="text-5xl font-bold text-blue-500">
@@ -68,7 +59,7 @@ const AllBooks = () => {
       </div>
 
       {/* Search + View Toggle */}
-      <div className="mb-6 flex flex-col md:flex-row items-center  gap-4">
+      <div className="mb-6 flex flex-col md:flex-row items-center gap-4">
         <input
           type="text"
           placeholder="Search by title, author, or category..."
@@ -119,7 +110,7 @@ const AllBooks = () => {
           </div>
         )
       ) : (
-        <p className="text-center">No books found.</p>
+        <p className="text-center text-xl">No books found.</p>
       )}
     </div>
   );

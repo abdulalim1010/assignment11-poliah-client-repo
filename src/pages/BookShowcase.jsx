@@ -8,7 +8,7 @@ const BookShowcase = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await fetch("https://assignment-polish-eleven.vercel.app/showcase"); // ✅ তোমার API URL
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/showcase`); // ✅ তোমার API URL
         const data = await res.json();
         setBooks(data);
       } catch (error) {
